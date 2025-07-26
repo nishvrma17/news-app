@@ -14,7 +14,7 @@ const Home = () => {
         `https://newsapi.org/v2/everything?q=${query}&apiKey=fd8c0e08fce64802ba37e5e018be9b9d`
       );
       setArticles(res.data.articles);
-      lastSearchRef.current = query; // store without re-render
+      lastSearchRef.current = query; 
     } catch (err) {
       console.error(err);
     }
@@ -27,10 +27,9 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchNews(); // initial fetch
+    fetchNews();
   }, []);
 
-  // useMemo to optimize rendering
   const filteredArticles = useMemo(() => {
     return articles.filter((article) =>
       article.title?.toLowerCase().includes(searchTerm.toLowerCase())
